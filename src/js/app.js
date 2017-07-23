@@ -1,26 +1,29 @@
-var showSecret = false;
+import '../css/main.css';
+import '../css/input-elements.css';
+import '../less/custom.less';
 
-secretButton.addEventListener('click', toggleSecretState);
-updateSecretParagraph();
+import {secretButton, secretParagraph, inputButton} from './dom-loader'
 
-function toggleSecretState() {
-    showSecret = !showSecret;
-    updateSecretParagraph();
-    updateSecretButton()
-}
+inputButton.addEventListener('click', check);
 
-function updateSecretButton() {
-    if (showSecret) {
-        secretButton.textContent = 'Hide the Secret';
-    } else {
-        secretButton.textContent = 'Show the Secret';
-    }
-}
 
-function updateSecretParagraph() {
-    if (showSecret) {
-        secretParagraph.style.display = 'block';
-    } else {
-        secretParagraph.style.display = 'none';
-    }
+//checks input information
+function check(){
+  var user = document.getElementById("username").value;
+  var pass=document.getElementById("pass").value;
+  var userBoot=false;
+  var passBool=false;
+
+  if (user.length<8){
+    alert("Username too short");
+  }
+  else{userBoot=true;}
+
+  if (pass.length<8){
+    alert("Passsword too short");
+  }
+  else{passBool=true;}
+  if (passBool&&userBoot){
+    alert( "Sorry, but we don't have a database");
+  }
 }
